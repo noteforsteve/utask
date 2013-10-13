@@ -118,7 +118,7 @@
 
 /*
  * Set to 1 to use the memory pool, set to 0 to exclude memory
- * pool code and use.
+ * pool code.
  */
 #define UTASK_POOL_USE          1
 
@@ -130,8 +130,7 @@
 
 /*
  * Set to 1 to enabled pool block head and tail checking.  It will
- * display debug message if memory block experienced an under or
- * overwrite.
+ * display debug message if memory block was under or overwritten.
  */
 #define UTASK_POOL_DEBUG        1
 
