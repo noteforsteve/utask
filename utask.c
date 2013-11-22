@@ -649,13 +649,13 @@ TcbDequeue(
 
 typedef struct PoolBlock_T
 {
-	struct PoolBlock_T	*pNext;
+    struct PoolBlock_T  *pNext;
 } PoolBlock_T;
 
 typedef struct
 {
     uint                uCount;
-    uint				uSize;
+    uint                uSize;
     void                *pBeg;
     PoolBlock_T         *pHead;
 } PoolHead_T;
@@ -756,8 +756,8 @@ PoolAlloc(
                 gPool[i].pHead = gPool[i].pHead->pNext;
 
 #if UTASK_DEBUG && UTASK_POOL_DEBUG
-		        /* Set the alloc size and beg and end signatures */
-		        *(uint *)p = uSize;
+                /* Set the alloc size and beg and end signatures */
+                *(uint *)p = uSize;
                 *(uint16 *)((uint8 *)p+sizeof(uint)) = UTASK_POOL_SIG_BEG;
                 p = (uint8 *)p + sizeof(uint16) + sizeof(uint);
                 memset(p, UTASK_POOL_SIG_EMPTY, uSize);
@@ -790,15 +790,15 @@ PoolFree(
                      (gPool[i].uCount * UTASK_POOL_UP(gPool[i].uSize))))
             {
 #if UTASK_DEBUG && UTASK_POOL_DEBUG
-				uint uSize = *(uint *)((uint8 *)p - 
+                uint uSize = *(uint *)((uint8 *)p - 
                              (sizeof(uint) + sizeof(uint16)));
 
-				/* Validate the memory size */
-				if (uSize > gPool[i].uSize)
-				{
+                /* Validate the memory size */
+                if (uSize > gPool[i].uSize)
+                {
                     /* Size overwrite */
                     DBG_MSG(DBG_WARN, "Pool block %p size out of range\n", p);
-				}
+                }
 
                 if (*(uint16 *)((uint8 *)p - sizeof(uint16)) != UTASK_POOL_SIG_BEG)
                 {
@@ -827,8 +827,8 @@ PoolFree(
 
 void
 PoolInit(
-	void
-	)
+    void
+    )
 {
 }
 
